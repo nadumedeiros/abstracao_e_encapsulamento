@@ -1,18 +1,63 @@
-## Getting Started
+# 💰 Sistema de Conta Bancária em Java
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este projeto é um **simulador de conta bancária** feito em Java, que permite ao usuário interagir com operações básicas como consultar saldo, sacar, pagar boletos e usar o cheque especial.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## 🚀 Funcionalidades
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+O sistema simula um menu bancário com as seguintes opções:
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+1 - Consultar saldo
+2 - Consultar cheque especial
+3 - Depositar dinheiro
+4 - Sacar dinheiro
+5 - Pagar boleto
+6 - Verificar uso do cheque especial
+0 - Sair
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+yaml
+Copiar
+Editar
 
-## Dependency Management
+---
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## 📋 Lógica do Sistema
+
+- Ao iniciar o programa, o usuário informa o valor inicial para depósito na criação da conta.
+- Com base nesse valor, é definido automaticamente o **limite do cheque especial**:
+  - Se o saldo for até R$500 → cheque especial = R$50
+  - Se for acima de R$500 → cheque especial = 50% do valor depositado
+
+---
+
+## 💼 Regras das operações
+
+### ✅ Depósito
+- O valor informado é adicionado ao saldo.
+
+### ✅ Saque
+- Se houver saldo suficiente: o valor é debitado normalmente.
+- Se não houver saldo, mas for possível cobrir com o cheque especial:
+  - O cheque especial é usado.
+  - Uma taxa de 20% sobre o valor usado do cheque é aplicada.
+- Se nem o saldo nem o cheque especial forem suficientes → operação negada.
+
+### ✅ Pagamento de Boleto
+- Funciona igual ao saque: primeiro tenta pagar com saldo, depois com cheque especial, aplicando taxa se necessário.
+
+### ✅ Consultas
+- O menu permite verificar o saldo atual, o limite do cheque especial e se o usuário está utilizando parte do limite.
+
+---
+
+## 🧠 Tecnologias utilizadas
+
+- Java (estrutura básica com `Scanner` para entrada de dados)
+- Lógica condicional (`if`, `else if`, `switch`, `do-while`)
+- Tipos primitivos (`double`, `int`)
+
+---
+
+👩‍💻 Autora
+Desenvolvido por Eduarda durante o Bootcamp Santander Java.
